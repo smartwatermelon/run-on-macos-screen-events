@@ -121,15 +121,15 @@ tail -f ~/.local/share/run-on-macos-screen-events.*/var/log/run-on-macos-screen-
 
 1. Git tag and push
     ```sh
-    git tag v1.0.x
+    git tag v1.1.x
     git push --tags
     ```
 2. Create a release \
    <https://github.com/smartwatermelon/run-on-macos-screen-events/releases/new>
 3. Tar and upload
     ```sh
-    tar cvf ./run-on-macos-screen-events-v1.0.x.tar ./run-on-macos-screen-events
-    gzip ./run-on-macos-screen-events-v1.0.x.tar
+    tar cvf ./run-on-macos-screen-events-v1.1.x.tar ./run-on-macos-screen-events
+    gzip ./run-on-macos-screen-events-v1.1.x.tar
     open .
     ```
 
