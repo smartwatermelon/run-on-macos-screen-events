@@ -1,22 +1,23 @@
-# run-on-macos-screen-unlock
+# run-on-macos-screen-events
 
-A tiny Swift program to run a command whenever the screen unlocks \
-(I use it for remounting network shares when waking from sleep)
+A tiny Swift program to run a command whenever the screen locks or unlocks \
+(I use it for locking other local machines' screens when locking the primary, and remounting network shares when waking from sleep)
 
 ```sh
-# run-on-macos-screen-unlock <command-to-run-on-unlock> [command-args]
-run-on-macos-screen-unlock ./examples/mount-network-shares.sh
+# run-on-macos-screen-events <command-to-run-on-unlock> [command-args]
+run-on-macos-screen-events ./examples/mount-network-shares.sh
 ```
 
 ```sh
 # add to launchctl (start on login)
 serviceman add --user \
     --path "$PATH" \
-    ./run-on-macos-screen-unlock ./examples/mount-network-shares.sh
+    ./run-on-macos-screen-events ./examples/mount-network-shares.sh
 ```
 
 # Table of Contents
 
+-	[Acknowledgement](#ack)
 -   [Install](#install)
 -   [Run on Login](#run-on-login)
     -   [With serviceman](#with-serviceman)
@@ -25,23 +26,26 @@ serviceman add --user \
 -   [Publish Release](#publish-release)
 -   [Similar Products](#similar-products)
 
+# Acknowledgement
+Forked from [coolaj86/run-on-macos-screen-unlock](https://github.com/coolaj86/run-on-macos-screen-unlock).
+
 # Install
 
 1. Download
     ```sh
-    curl --fail-with-body -L -O https://github.com/coolaj86/run-on-macos-screen-unlock/releases/download/v1.0.0/run-on-macos-screen-unlock-v1.0.0.tar.gz
+    curl --fail-with-body -L -O https://github.com/smartwatermelon/run-on-macos-screen-events/releases/download/v1.1.0/run-on-macos-screen-events-v1.1.0.tar.gz
     ```
 2. Extract
     ```sh
-    tar xvf ./run-on-macos-screen-unlock-v1.0.0.tar.gz
+    tar xvf ./run-on-macos-screen-events-v1.1.0.tar.gz
     ```
 3. Allow running even though it's unsigned
     ```sh
-    xattr -r -d com.apple.quarantine ./run-on-macos-screen-unlock
+    xattr -r -d com.apple.quarantine ./run-on-macos-screen-events
     ```
 4. Move into your `PATH`
     ```sh
-    mv ./run-on-macos-screen-unlock ~/bin/
+    mv ./run-on-macos-screen-events ~/bin/
     ```
 
 # Run on Login
@@ -65,14 +69,14 @@ You'll see notifications similar to these when adding launchctl services yoursel
     ```sh
     serviceman add --user \
         --path "$PATH" \
-        ~/bin/run-on-macos-screen-unlock COMMAND_GOES_HERE
+        ~/bin/run-on-macos-screen-events COMMAND_GOES_HERE
     ```
 
 ## With a plist template
 
 1. Download the template plist file
     ```sh
-    curl --fail-with-body -L -O https://raw.githubusercontent.com/coolaj86/run-on-macos-screen-unlock/main/examples/run-on-macos-screen-unlock.COMMAND_LABEL_GOES_HERE.plist
+    curl --fail-with-body -L -O https://raw.githubusercontent.com/smartwatermelon/run-on-macos-screen-events/main/examples/run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE.plist
     ```
 2. Change the template variables to what you need:
 
@@ -82,18 +86,18 @@ You'll see notifications similar to these when adding launchctl services yoursel
 
 3. Rename and move the file to `~/Library/LaunchDaemons/`
     ```sh
-    mv ./run-on-macos-screen-unlock.COMMAND_LABEL_GOES_HERE.plist ./run-on-macos-screen-unlock.example-label.plist
-    mv ./run-on-macos-screen-unlock.*.plist ~/Library/LaunchDaemons/
+    mv ./run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE.plist ./run-on-macos-screen-events.example-label.plist
+    mv ./run-on-macos-screen-events.*.plist ~/Library/LaunchDaemons/
     ```
 4. Register using `launchctl`
     ```sh
-    launchctl load -w ~/Library/LaunchAgents/run-on-macos-screen-unlock.*.plist
+    launchctl load -w ~/Library/LaunchAgents/run-on-macos-screen-events.*.plist
     ```
 
 ## View logs
 
 ```sh
-tail -f ~/.local/share/run-on-macos-screen-unlock.*/var/log/run-on-macos-screen-unlock.*.log
+tail -f ~/.local/share/run-on-macos-screen-events.*/var/log/run-on-macos-screen-events.*.log
 ```
 
 # Build from Source
@@ -105,12 +109,12 @@ tail -f ~/.local/share/run-on-macos-screen-unlock.*/var/log/run-on-macos-screen-
     ```
 2. Clone and enter the repo
     ```sh
-    git clone https://github.com/coolaj86/run-on-macos-screen-unlock.git
-    pushd ./run-on-macos-screen-unlock/
+    git clone https://github.com/smartwatermelon/run-on-macos-screen-events.git
+    pushd ./run-on-macos-screen-events/
     ```
 3. Build with `swiftc`
     ```sh
-    swiftc ./run-on-macos-screen-unlock.swift
+    swiftc ./run-on-macos-screen-events.swift
     ```
 
 # Publish Release
@@ -121,11 +125,11 @@ tail -f ~/.local/share/run-on-macos-screen-unlock.*/var/log/run-on-macos-screen-
     git push --tags
     ```
 2. Create a release \
-   <https://github.com/coolaj86/run-on-macos-screen-unlock/releases/new>
+   <https://github.com/smartwatermelon/run-on-macos-screen-events/releases/new>
 3. Tar and upload
     ```sh
-    tar cvf ./run-on-macos-screen-unlock-v1.0.x.tar ./run-on-macos-screen-unlock
-    gzip ./run-on-macos-screen-unlock-v1.0.x.tar
+    tar cvf ./run-on-macos-screen-events-v1.0.x.tar ./run-on-macos-screen-events
+    gzip ./run-on-macos-screen-events-v1.0.x.tar
     open .
     ```
 

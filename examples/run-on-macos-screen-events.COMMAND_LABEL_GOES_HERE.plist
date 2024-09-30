@@ -4,10 +4,10 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>run-on-macos-screen-unlock.COMMAND_LABEL_GOES_HERE</string>
+	<string>run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Users/USERNAME_GOES_HERE/bin/run-on-macos-screen-unlock</string>
+		<string>/Users/USERNAME_GOES_HERE/bin/run-on-macos-screen-events</string>
 		<string>COMMAND_GOES_HERE</string>
 	</array>
 	<key>EnvironmentVariables</key>
@@ -33,8 +33,8 @@
 	<string>/tmp</string>
 
 	<key>StandardErrorPath</key>
-	<string>/Users/USERNAME_GOES_HERE/.local/share/run-on-macos-screen-unlock.COMMAND_LABEL_GOES_HERE/var/log/run-on-macos-screen-unlock.COMMAND_LABEL_GOES_HERE.log</string>
+	<string>/Users/USERNAME_GOES_HERE/.local/share/run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE/var/log/run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE.log</string>
 	<key>StandardOutPath</key>
-	<string>/Users/USERNAME_GOES_HERE/.local/share/run-on-macos-screen-unlock.COMMAND_LABEL_GOES_HERE/var/log/run-on-macos-screen-unlock.COMMAND_LABEL_GOES_HERE.log</string>
+	<string>/Users/USERNAME_GOES_HERE/.local/share/run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE/var/log/run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE.log</string>
 </dict>
 </plist>
