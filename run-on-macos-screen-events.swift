@@ -7,8 +7,8 @@ let author = "AJ ONeal <aj@therootcompany.com>"
 let fork = "Andrew Rich <andrew.rich@gmail.com>"
 
 let versionMessage = "\(name) \(version) (\(build))"
-let copyrightMessage = "Copyright 2024 \(author)"
-let copyrightMessage = "\(copyrightMessage)\nForked by \(fork)\"
+let forkCopyrightMessage = "Copyright 2024 \(author)"
+let copyrightMessage = "\(forkCopyrightMessage)\nForked by \(fork)"
 
 let helpMessage = """
 Runs user-specified commands when the screen is locked or unlocked by
