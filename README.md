@@ -78,26 +78,26 @@ You'll see notifications similar to these when adding launchctl services yoursel
     ```sh
     curl --fail-with-body -L -O https://raw.githubusercontent.com/smartwatermelon/run-on-macos-screen-events/main/examples/run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE.plist
     ```
-2. Change the template variables to what you need:
+2. Change the template variables to what you need and rename plist file according to next placeholders:
 
     - `USERNAME_GOES_HERE` (the result of `$(id -u -n)` or `echo $USER`)
     - `COMMAND_LABEL_GOES_HERE` (lowercase, dashes, no spaces)
     - `COMMAND_GOES_HERE` (the example uses `./examples/mount-network-shares.sh`)
+    - `PATH_ENVIRONMENT_GOES_HERE` (the result of `echo $PATH`)
 
-3. Rename and move the file to `~/Library/LaunchDaemons/`
+3. Rename and move the file to `~/Library/LaunchAgents/`
     ```sh
-    mv ./run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE.plist ./run-on-macos-screen-events.example-label.plist
-    mv ./run-on-macos-screen-events.*.plist ~/Library/LaunchDaemons/
+    mv ./run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE.plist ~/Library/LaunchAgents/
     ```
 4. Register using `launchctl`
     ```sh
-    launchctl load -w ~/Library/LaunchAgents/run-on-macos-screen-events.*.plist
+    launchctl load -w ~/Library/LaunchAgents/run-on-macos-screen-events.COMMAND_LABEL_GOES_HERE.plist
     ```
 
 ## View logs
 
 ```sh
-tail -f ~/.local/share/run-on-macos-screen-events.*/var/log/run-on-macos-screen-events.*.log
+tail -f ~/.local/share/run-on-macos-screen-events/var/log/COMMAND_LABEL_GOES_HERE.log
 ```
 
 # Build from Source
